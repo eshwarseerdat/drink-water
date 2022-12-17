@@ -7,12 +7,25 @@ const percent = document.querySelector(".percentage");
 
 // add full class up to clicked element then update height
 const fullCup = (i) => {
+  // if selected cup contains full class and next sibling doesn't remove full
+  if (
+    smCups[i].classList.contains("full") &&
+    !smCups[i].nextElementSibling.classList.contains("full")
+  ) {
+    smCups[i].classList.remove("full");
+    updateHeight(i--);
+  }
+
+  // if first cup contains full class when clicked remove full class from all cups
   if (i === 0 && smCups[i].classList.contains("full")) {
     smCups.forEach((cup) => {
       cup.classList.remove("full");
       updateHeight(-1);
     });
-  } else {
+  }
+
+  // add full class up to selected cup and remove full from others
+  else {
     smCups.forEach((cup, j) => {
       if (j <= i) {
         cup.classList.add("full");
