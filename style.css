@@ -53,7 +53,7 @@ h2 {
 }
 
 #big-cup .remaining.hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .remaining #liter {
@@ -61,11 +61,12 @@ h2 {
 }
 
 #big-cup .percentage {
-  display: none;
+  visibility: hidden;
 }
 
 #big-cup .percentage.show {
   display: flex;
+  visibility: visible;
   justify-content: center;
   align-items: center;
   font-weight: bold;
