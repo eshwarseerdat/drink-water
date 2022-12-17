@@ -10,7 +10,7 @@ const fullCup = (i) => {
   if (i === 0 && smCups[i].classList.contains("full")) {
     smCups.forEach((cup) => {
       cup.classList.remove("full");
-      // updateHeight(-1);
+      updateHeight(-1);
     });
   } else {
     smCups.forEach((cup, j) => {
@@ -20,7 +20,29 @@ const fullCup = (i) => {
         cup.classList.remove("full");
       }
     });
-    // updateHeight(i);
+    updateHeight(i);
+  }
+};
+
+// update height and display of remaining and percentage elements
+const updateHeight = (i) => {
+  const totalDrinks = i + 1;
+  const percentHeight = (100 / smCups.length) * totalDrinks;
+  const remainingHeight = 100 - percentHeight;
+
+  // updateText(percentHeight);
+
+  if (totalDrinks === 0) {
+    percent.classList.remove("show");
+    remaining.classList.remove("hidden");
+    remaining.style.height = `${remainingHeight}%`;
+  } else {
+    remaining.style.height = `${remainingHeight}%`;
+    percent.style.height = `${percentHeight}%`;
+    remaining.classList.remove("hidden");
+
+    if (percentHeight > 0) percent.classList.add("show");
+    if (totalDrinks === smCups.length) remaining.classList.add("hidden");
   }
 };
 
