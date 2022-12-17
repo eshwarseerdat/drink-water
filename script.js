@@ -30,7 +30,7 @@ const updateHeight = (i) => {
   const percentHeight = (100 / smCups.length) * totalDrinks;
   const remainingHeight = 100 - percentHeight;
 
-  // updateText(percentHeight);
+  updateText(percentHeight);
 
   if (totalDrinks === 0) {
     percent.classList.remove("show");
@@ -44,6 +44,14 @@ const updateHeight = (i) => {
     if (percentHeight > 0) percent.classList.add("show");
     if (totalDrinks === smCups.length) remaining.classList.add("hidden");
   }
+};
+
+// update remaining liter and percent drank text
+const updateText = (percentDrank) => {
+  const literDrank = percentDrank / 100;
+  const remainingLiter = 2 - 2 * literDrank;
+  liter.innerText = `${remainingLiter}L`;
+  percent.innerText = `${percentDrank}%`;
 };
 
 smCups.forEach((cup, i) => {
